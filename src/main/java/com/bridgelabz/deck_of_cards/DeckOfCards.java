@@ -1,5 +1,6 @@
 package com.bridgelabz.deck_of_cards;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class DeckOfCards {
@@ -28,19 +29,17 @@ public class DeckOfCards {
         }
     }
 
-    public void distributeCards() {
-        int index = 0;
-        for (int i = 0; i < 4; i++) {
-            Card[] card = new Card[9];
-            for (int j = 0; j < 9; j++) {
-                card[j] = DECK_OF_CARDS[index];
-                index++;
+    public void distributeCards(int noOfPlayers) {
+        int j = 0;
+        for (int i = 0; i < noOfPlayers; i++) {
+            ArrayList<Card> playerCards = new ArrayList<>();
+            for (int k = 0; k < 10; k++) {
+                playerCards.add(DECK_OF_CARDS[j]);
+                j++;
             }
-            System.out.println("Cards for player " + (i + 1) );
-            for (Card x: card) {
-                System.out.print(x + " ");
-            }
-            System.out.println();
+            Player player = new Player();
+            player.setPlayerCards(playerCards);
+            System.out.println(player.getPlayerCards().toString());
         }
     }
 }
